@@ -57,10 +57,8 @@ def evaluate_anonymized_model(df, k=5):
     df_train_original, df_test_original = train_test_split(df_copy, test_size=0.2)
 
 
-    #everything except
     quasi_idents = ['children']
     categorical = list(df.columns[:-1])
-    categorical.remove('children')
 
     anonymized_train = k_anonymize(df_train_original, quasi_idents, categorical, k=k)
     if anonymized_train.empty:
@@ -239,6 +237,7 @@ if __name__ == "__main__":
 
     print("\n>>> PART 2: Feature Importance Analysis (Heatmap)")
     feature_df = analyze_feature_importance(df, k_range=range(2, 11))
+
 
 
 
